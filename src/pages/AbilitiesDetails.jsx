@@ -2,16 +2,16 @@ import React, { Component } from "react";
 import pokeService from "../services/poke-api";
 import helpers from "../helpers/Helpers";
 
-export default class PokemonDetails extends Component {
+export default class AbilitiesDetails extends Component {
   state = {
-    pokemon: null
+    ability: null
   };
 
   async componentDidMount() {
     const { id } = this.props.match.params;
-    const response = await pokeService.getOnePokemon(id);
+    const response = await pokeService.getOneAbility(id);
     this.setState({
-      pokemon: response.data,
+      ability: response.data,
       id: id
     });
   }
@@ -24,11 +24,11 @@ export default class PokemonDetails extends Component {
     return (
       <>
         <button onClick={this.goToPreviousPage}>Back</button>
-        <h3>Pokemon Details</h3>
+        <h3>Ability Details</h3>
         <section>
-          {this.state.pokemon !== null ? (
+          {this.state.ability !== null ? (
             <article key={this.state.id}>
-              <h1>{helpers.capitalize(this.state.pokemon.name)}</h1>
+              <h1>{helpers.capitalize(this.state.ability.name)}</h1>
             </article>
           ) : (
             <p>Loading...</p>

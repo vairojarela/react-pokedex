@@ -1,21 +1,30 @@
-import axios from 'axios';
+import axios from "axios";
 
 class PokeService {
-
   constructor() {
     this.pokeApi = axios.create({
-      baseURL: 'https://pokeapi.co/api/v2/',
-    })
+      baseURL: "https://pokeapi.co/api/v2/"
+    });
   }
 
   async getAllPokemons() {
-    const response = await this.pokeApi.get('pokemon')
-    return response
+    const response = await this.pokeApi.get("pokemon");
+    return response;
   }
 
   async getOnePokemon(id) {
-    const response = await this.pokeApi.get(`pokemon/${id}`)
-    return response
+    const response = await this.pokeApi.get(`pokemon/${id}`);
+    return response;
+  }
+
+  async getAllAbilities() {
+    const response = await this.pokeApi.get("ability");
+    return response;
+  }
+
+  async getOneAbility(id) {
+    const response = await this.pokeApi.get(`ability/${id}`);
+    return response;
   }
 
   /*  login(user) {
@@ -33,7 +42,6 @@ class PokeService {
      return this.auth.get('/auth/me')
      .then(response => response.data)
    } */
-
 }
 
 const pokeService = new PokeService();
